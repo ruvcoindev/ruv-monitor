@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>ruv-monitor (web)</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    input, button { padding: 8px; margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <div id="app">Загрузка...</div>
+  <script src="./pkg/ruv_monitor_web.js"></script>
+  <script>
+    wasm_bindgen('./pkg/ruv_monitor_web_bg.wasm').then(() => {
+      const app = document.getElementById('app');
+      app.innerHTML = '';
+      wasm_bindgen.run_app();
+    });
+  </script>
+</body>
+</html>
